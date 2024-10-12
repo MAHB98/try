@@ -1,17 +1,16 @@
 import { res } from "@/lib/database";
 import { User } from "next-auth";
 const page = async () => {
-  const users = (await res()) as User[];
+  const users = ((await res()) as User) || null;
   return (
     <div>
       page
-      {!!users &&
-        users.map((ar) => (
-          <div key={ar.id} className="flex-col">
-            <p> {ar.name}</p>
-            <p>{ar.email}</p>
-          </div>
-        ))}
+      {!!users && (
+        <div key={users.id} className="flex-col">
+          <p> {users.name}</p>
+          <p>{users.email}</p>
+        </div>
+      )}
     </div>
   );
 };
