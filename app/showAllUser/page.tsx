@@ -5,7 +5,13 @@ const page = async () => {
   return (
     <div>
       page
-      {!!users && users.map((ar) => <p key={ar.id}>{ar.name}</p>)}
+      {!!users &&
+        users.map((ar) => (
+          <div key={ar.id} className="flex-col">
+            <p> {ar.name}</p>
+            <p>{ar.email}</p>
+          </div>
+        ))}
     </div>
   );
 };
