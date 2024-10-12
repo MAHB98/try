@@ -19,21 +19,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Google,
     Github,
     credentials({
-      async authorize(credentials) {
-        console.log(credentials.email);
+      // async authorize(credentials) {
+      //   console.log(credentials.email);
 
-        if (!credentials.email || !credentials.password) return null;
-        const getUser = await db.getUserByEmail!(credentials.email as string);
-        if (!getUser) return null;
-        console.log(getUser);
+      //   if (!credentials.email || !credentials.password) return null;
+      //   const getUser = await db.getUserByEmail!(credentials.email as string);
+      //   if (!getUser) return null;
+      //   console.log(getUser);
 
-        const compare = await bcrypt.compare(
-          credentials.password as string,
-          getUser.password
-        );
-        if (!compare) return null;
-        return getUser;
-      },
+      //   const compare = await bcrypt.compare(
+      //     credentials.password as string,
+      //     getUser.password
+      //   );
+      //   if (!compare) return null;
+      //   return getUser;
+      // },
       credentials: {
         email: {
           label: "email",
