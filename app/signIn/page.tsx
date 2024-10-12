@@ -1,6 +1,5 @@
 import { FaUnlockKeyhole } from "react-icons/fa6";
 import { submit } from "../action/submit";
-import bcrypt from "bcryptjs";
 
 const page = () => {
   return (

@@ -1,7 +1,7 @@
 "use server";
 
-import { auth, signIn } from "@/auth";
-import { db } from "@/lib/database";
+import { signIn } from "@/auth";
+
 export const submit = async ({
   email,
   password,

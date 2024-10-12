@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/core": "^0.37.0",
     "@mahb98/mysql-adapter": "^0.1.2",
     "bcryptjs": "^2.4.3",
     "mysql2": "^3.11.3",
