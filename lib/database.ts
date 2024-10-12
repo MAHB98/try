@@ -20,3 +20,4 @@ const pool = mysql
 //   emailVerified: null,
 // };
 export const res = (id: string) => mysqlAdapter(pool).getUser!(id);
+export const db = mysqlAdapter(pool);

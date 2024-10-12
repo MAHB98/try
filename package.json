@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@mahb98/mysql-adapter": "^0.1.2",
+    "bcryptjs": "^2.4.3",
     "mysql2": "^3.11.3",
     "net": "^1.0.2",
     "next": "14.2.15",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-icons": "^5.3.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.16.11",
     "@types/react": "^18",
     "@types/react-dom": "^18",
