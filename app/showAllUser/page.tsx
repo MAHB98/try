@@ -1,10 +1,34 @@
-import { res } from "@/lib/database";
+"use client";
+// import { User } from "next-auth";
+import { useState } from "react";
+import { database } from "./database";
 import { User } from "next-auth";
-const page = async () => {
-  const users = ((await res()) as User) || null;
+
+const Page = () => {
+  const [id, setId] = useState("");
+  const [users, setUser] = useState<User | null>(null);
+  const [enable, setEnable] = useState(false);
   return (
-    <div>
-      page
+    <div className="flex flex-col m-2  gap-2">
+      <input
+        type="number"
+        className="text-black"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+      />
+      <button
+        onClick={async () => {
+          setEnable(true);
+          setUser(await database(id));
+          setEnable(false);
+        }}
+        type="submit"
+        disabled={enable}
+        className="border-2 border-red-300 hover:bg-blue-400 disabled:bg-purple-500"
+      >
+        submit
+      </button>
+
       {!!users && (
         <div key={users.id} className="flex-col">
           <p> {users.name}</p>
@@ -14,4 +38,13 @@ const page = async () => {
     </div>
   );
 };
-export default page;
+export default Page;
+// const page = async () => {
+//   const user = await fetch("http://localhost:3000/api/getUser", {
+//     method: "POST",
+//   });
+//   console.log(user);
+
+//   return <div>page</div>;
+// };
+// export default page;

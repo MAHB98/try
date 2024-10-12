@@ -12,11 +12,11 @@ const pool = mysql
 //   const [res] = await pool.query("select * from users");
 //   return res;
 // };
-const user = {
-  email: "asa0",
-  name: "sdsd0",
-  id: "1",
-  image: null,
-  emailVerified: null,
-};
-export const res = () => mysqlAdapter(pool).getUser!(user.id);
+// const user = {
+//   email: "asa0",
+//   name: "sdsd0",
+//   id: "1",
+//   image: null,
+//   emailVerified: null,
+// };
+export const res = (id: string) => mysqlAdapter(pool).getUser!(id);
