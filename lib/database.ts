@@ -2,10 +2,10 @@ import mysql from "mysql2";
 import mysqlAdapter from "@mahb98/mysql-adapter";
 const pool = mysql
   .createPool({
-    host: "sql12.freesqldatabase.com",
-    user: "sql12736019",
-    database: "sql12736019",
-    password: "VtPjvrMa3g",
+    host: process.env.mysql_host,
+    user: process.env.mysql_user,
+    database: process.env.mysql_database,
+    password: process.env.mysql_password,
   })
   .promise();
 // export const res = async () => {
