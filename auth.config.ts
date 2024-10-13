@@ -30,6 +30,7 @@ export default {
         const getUser = await res.json();
         // const getUser = await db.getUserByEmail!(credentials.email as string);
         if (!getUser) return null;
+        console.log(getUser);
 
         const compare = await bcrypt.compare(
           credentials.password as string,

@@ -13,7 +13,7 @@ export const POST = async (req: NextRequest) => {
   // }
   // console.log(id);
 
-  const user = await db.getUserByEmail!(data.id);
+  const user = await db.getUserByEmail!(data.email);
   console.log(user);
 
   return NextResponse.json(user);
