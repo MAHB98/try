@@ -37,10 +37,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log(credentials);
 
         if (!credentials.email || !credentials.password) return null;
-        const getUser = await database(credentials.email as string);
-        // const getUser = await db.getUserByEmail!(credentials.email as string);
-        if (!getUser) return null;
-        console.log(getUser);
+        // const getUser = await database(credentials.email as string);
+        // // const getUser = await db.getUserByEmail!(credentials.email as string);
+        // if (!getUser) return null;
+        // console.log(getUser);
 
         // const compare = await bcrypt.compare(
         //   credentials.password as string,
@@ -63,6 +63,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  adapter: db,
   secret: process.env.auth_secret,
   trustHost: true,
 });
