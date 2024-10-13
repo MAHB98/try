@@ -33,12 +33,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Github,
     credentials({
       authorize: async (credentials) => {
-        console.log(credentials.email);
+        console.log(credentials);
 
         if (!credentials.email || !credentials.password) return null;
-        const getUser = await db.getUserByEmail!(credentials.email as string);
-        if (!getUser) return null;
-        console.log(getUser);
+        // const getUser = await db.getUserByEmail!(credentials.email as string);
+        // if (!getUser) return null;
+        // console.log(getUser);
 
         // const compare = await bcrypt.compare(
         //   credentials.password as string,
