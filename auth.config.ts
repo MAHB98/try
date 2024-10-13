@@ -2,7 +2,6 @@ import type { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import credentials from "next-auth/providers/credentials";
-import { database } from "./app/showAllUser/database";
 import bcrypt from "bcryptjs";
 // Notice this is only an object, not a full Auth.js instance
 export default {
@@ -12,13 +11,13 @@ export default {
     Google,
     Github,
     credentials({
-      authorize: async (credentials) => {
-        console.log(credentials);
+      authorize: async (credentials, req) => {
+        const origin = req.headers.get("origin");
 
         if (!credentials.email || !credentials.password) return null;
         const email = credentials.email;
 
-        const res = await fetch("http://localhost:3000/api/getUser", {
+        const res = await fetch(origin + "/api/getUser", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,6 +44,7 @@ export default {
 
         return getUser;
       },
+
       credentials: {
         email: {
           label: "email",
