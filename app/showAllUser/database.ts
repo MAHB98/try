@@ -3,6 +3,13 @@
 import { db } from "@/lib/database";
 
 export const database = async (email: string) => {
-  const user = await db.getUserByEmail!(email);
-  return user;
+  try {
+    const user = await db.getUserByEmail!(email);
+
+    return user;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 };
