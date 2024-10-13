@@ -1,5 +1,5 @@
 "use server";
-
+// export const runtime = "edge";
 import { db } from "@/lib/database";
 
 export const database = async (email: string) => {

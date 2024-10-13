@@ -11,7 +11,7 @@ const Page = () => {
   return (
     <div className="flex flex-col m-2  gap-2">
       <input
-        type="number"
+        type="email"
         className="text-black"
         value={id}
         onChange={(e) => setId(e.target.value)}
@@ -19,7 +19,18 @@ const Page = () => {
       <button
         onClick={async () => {
           setEnable(true);
-          setUser(await database(id));
+          // setUser(await database(id));
+          const res = await fetch("http://localhost:3000/api/getUser", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id,
+            }),
+          });
+          console.log(await res.json());
+
           setEnable(false);
         }}
         type="submit"

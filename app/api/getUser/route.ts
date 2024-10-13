@@ -1,13 +1,23 @@
-import { res } from "@/lib/database";
+import { db } from "@/lib/database";
+import { config } from "@/middleware";
 import { NextRequest, NextResponse } from "next/server";
-
 export const POST = async (req: NextRequest) => {
-  let { id } = await req.json().catch(() => console.log("body is require"));
-  if (!id) {
-    id = "2";
-  }
-  console.log(id);
+  let data = await req.json().catch(() => {
+    console.log("body is require");
+    return NextResponse.json("body is require");
+  });
+  console.log(data);
 
-  const user = await res(id);
-  return NextResponse.json(user);
+  // if (!id) {
+  //   id = "2";
+  // }
+  // console.log(id);
+  try {
+    const user = await db.getUserByEmail!(data.email);
+    console.log(user);
+    return NextResponse.json(user);
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
