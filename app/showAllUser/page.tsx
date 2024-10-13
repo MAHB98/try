@@ -1,7 +1,6 @@
 "use client";
 // import { User } from "next-auth";
 import { useState } from "react";
-import { database } from "./database";
 import { User } from "next-auth";
 
 const Page = () => {
@@ -29,7 +28,7 @@ const Page = () => {
               id,
             }),
           });
-          console.log(await res.json());
+          setUser(await res.json());
 
           setEnable(false);
         }}
