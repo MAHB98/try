@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import { db } from "./lib/database";
 import { DefaultSession } from "next-auth";
+import { database } from "./app/showAllUser/database";
 declare module "@auth/core/adapters" {
   interface AdapterUser {
     password: string;
@@ -36,13 +37,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         console.log(credentials);
 
         if (!credentials.email || !credentials.password) return null;
+        const getUser = await database(credentials.email as string);
         // const getUser = await db.getUserByEmail!(credentials.email as string);
-        // if (!getUser) return null;
-        // console.log(getUser);
+        if (!getUser) return null;
+        console.log(getUser);
 
         // const compare = await bcrypt.compare(
         //   credentials.password as string,
-        //   getUser.password
+        //   database.password
         // );
         // if (!compare) return null;
         return null;

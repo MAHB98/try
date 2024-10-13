@@ -1,8 +1,8 @@
 "use server";
-import { res } from "@/lib/database";
 
-export const database = async (id: string) => {
-  const users = await res(id);
-  console.log(users);
-  return users;
+import { db } from "@/lib/database";
+
+export const database = async (email: string) => {
+  const user = await db.getUserByEmail!(email);
+  return user;
 };
